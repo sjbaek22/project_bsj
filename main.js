@@ -102,13 +102,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const labelContainer = document.getElementById('label-container');
         labelContainer.innerHTML = '';
         
+        // Map labels: Class 1 -> 강아지, Class 2 -> 고양이
+        const labelMapping = {
+            'Class 1': '강아지',
+            'Class 2': '고양이'
+        };
+
+        // Apply mapping to predictions
+        const mappedPredictions = prediction.map(p => ({
+            className: labelMapping[p.className] || p.className,
+            probability: p.probability
+        }));
+
         // Sort by probability
-        prediction.sort((a, b) => b.probability - a.probability);
+        mappedPredictions.sort((a, b) => b.probability - a.probability);
 
-        const topResult = prediction[0];
-        resultMessage.textContent = `You look like a ${topResult.className}!`;
+        const topResult = mappedPredictions[0];
+        resultMessage.textContent = `당신은 ${topResult.className}상입니다!`;
 
-        prediction.forEach(p => {
+        mappedPredictions.forEach(p => {
             const percentage = (p.probability * 100).toFixed(0);
             const resultBar = document.createElement('div');
             resultBar.classList.add('result-bar-container');

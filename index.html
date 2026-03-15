@@ -15,24 +15,24 @@
 <body>
     <div class="container">
         <button id="theme-toggle" title="Toggle Dark/Light Mode">🌓</button>
-        <h1>Animal Face Test</h1>
-        <p class="subtitle">Upload your photo to see if you look like a dog or a cat!</p>
+        <h1>동물상 테스트</h1>
+        <p class="subtitle">나와 닮은 동물은 무엇일까요? 사진을 올려서 확인해보세요!</p>
 
         <div class="upload-section">
             <div class="upload-area" id="upload-area">
                 <input type="file" id="image-input" accept="image/*" hidden>
                 <div class="upload-icon">📸</div>
-                <p>Click or drag your photo here</p>
+                <p>사진을 클릭하거나 여기로 끌어오세요</p>
             </div>
             <div id="image-preview-container" class="hidden">
                 <img id="image-preview" src="" alt="User Preview">
-                <button id="re-upload-btn">Try Another</button>
+                <button id="re-upload-btn">다시 시도하기</button>
             </div>
         </div>
 
         <div id="loading" class="hidden">
             <div class="spinner"></div>
-            <p>Analyzing your face...</p>
+            <p>얼굴을 분석하고 있습니다...</p>
         </div>
 
         <div id="result-container" class="hidden">
