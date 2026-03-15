@@ -160,9 +160,34 @@ h1 {
 
 #result-message {
     font-size: 1.8rem;
-    margin: 30px 0;
+    margin: 30px 0 10px;
     color: var(--accent-color);
     text-align: center;
+}
+
+.result-desc {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 30px;
+    text-align: left;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-desc p {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.result-desc p:last-child {
+    margin-bottom: 0;
 }
 
 .result-bar-container {
