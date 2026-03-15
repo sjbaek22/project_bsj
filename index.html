@@ -12,6 +12,49 @@
         <h1>Lotto Number Generator</h1>
         <div class="lotto-numbers" id="lotto-numbers"></div>
         <button id="generate-btn">Generate Numbers</button>
+
+        <div class="contact-section">
+            <hr>
+            <h3>Partnership Inquiry</h3>
+            <form action="https://formspree.io/f/xykndwqa" method="POST" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="_replyto" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="How can we collaborate?" required></textarea>
+                </div>
+                <button type="submit" id="submit-btn">Send Message</button>
+            </form>
+        </div>
+
+        <div class="comments-section">
+            <hr>
+            <h3>Comments</h3>
+            <div id="disqus_thread"></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                */
+                var disqus_config = function () {
+                    this.page.url = window.location.href;  // Replace with your page's canonical URL
+                    this.page.identifier = 'lotto-generator-main'; // Replace with your page's unique identifier
+                };
+                (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://lotto-generator-demo.disqus.com/embed.js'; // Replace 'lotto-generator-demo' with your forum shortname
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>
