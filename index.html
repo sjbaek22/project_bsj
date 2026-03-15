@@ -3,18 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Generator</title>
+    <title>Animal Face Test - Dog or Cat?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- TensorFlow.js and Teachable Machine Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
     <div class="container">
         <button id="theme-toggle" title="Toggle Dark/Light Mode">🌓</button>
-        <h1>Lotto Number Generator</h1>
-        <div class="lotto-numbers" id="lotto-numbers"></div>
-        <button id="generate-btn">Generate Numbers</button>
+        <h1>Animal Face Test</h1>
+        <p class="subtitle">Upload your photo to see if you look like a dog or a cat!</p>
+
+        <div class="upload-section">
+            <div class="upload-area" id="upload-area">
+                <input type="file" id="image-input" accept="image/*" hidden>
+                <div class="upload-icon">📸</div>
+                <p>Click or drag your photo here</p>
+            </div>
+            <div id="image-preview-container" class="hidden">
+                <img id="image-preview" src="" alt="User Preview">
+                <button id="re-upload-btn">Try Another</button>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Analyzing your face...</p>
+        </div>
+
+        <div id="result-container" class="hidden">
+            <h2 id="result-message"></h2>
+            <div id="label-container"></div>
+        </div>
 
         <div class="contact-section">
             <hr>
@@ -41,17 +65,13 @@
             <h3>Comments</h3>
             <div id="disqus_thread"></div>
             <script>
-                /**
-                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-                */
                 var disqus_config = function () {
-                    this.page.url = window.location.href;  // Replace with your page's canonical URL
-                    this.page.identifier = 'lotto-generator-main'; // Replace with your page's unique identifier
+                    this.page.url = window.location.href;
+                    this.page.identifier = 'animal-face-test';
                 };
-                (function() { // DON'T EDIT BELOW THIS LINE
+                (function() {
                     var d = document, s = d.createElement('script');
-                    s.src = 'https://project-bsj.disqus.com/embed.js'; // Replace 'lotto-generator-demo' with your forum shortname
+                    s.src = 'https://project-bsj.disqus.com/embed.js';
                     s.setAttribute('data-timestamp', +new Date());
                     (d.head || d.body).appendChild(s);
                 })();
