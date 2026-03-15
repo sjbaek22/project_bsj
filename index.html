@@ -3,42 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animal Face Test - Dog or Cat?</title>
+    <title>동물상 테스트 & 블로그</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- TensorFlow.js and Teachable Machine Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <button id="theme-toggle" title="Toggle Dark/Light Mode">🌓</button>
-        <h1>동물상 테스트</h1>
-        <p class="subtitle">나와 닮은 동물은 무엇일까요? 사진을 올려서 확인해보세요!</p>
-
-        <div class="upload-section">
-            <div class="upload-area" id="upload-area">
-                <input type="file" id="image-input" accept="image/*" hidden>
-                <div class="upload-icon">📸</div>
-                <p>사진을 클릭하거나 여기로 끌어오세요</p>
+        <nav class="main-nav">
+            <div class="nav-links">
+                <a href="#" id="nav-test" class="active">테스트</a>
+                <a href="#" id="nav-blog">블로그</a>
             </div>
-            <div id="image-preview-container" class="hidden">
-                <img id="image-preview" src="" alt="User Preview">
-                <button id="re-upload-btn">다시 시도하기</button>
+            <button id="theme-toggle" title="Toggle Dark/Light Mode">🌓</button>
+        </nav>
+
+        <section id="test-section">
+            <h1>동물상 테스트</h1>
+            <p class="subtitle">나와 닮은 동물은 무엇일까요? 사진을 올려서 확인해보세요!</p>
+
+            <div class="upload-section">
+                <div class="upload-area" id="upload-area">
+                    <input type="file" id="image-input" accept="image/*" hidden>
+                    <div class="upload-icon">📸</div>
+                    <p>사진을 클릭하거나 여기로 끌어오세요</p>
+                </div>
+                <div id="image-preview-container" class="hidden">
+                    <img id="image-preview" src="" alt="User Preview">
+                    <button id="re-upload-btn">다시 시도하기</button>
+                </div>
             </div>
-        </div>
 
-        <div id="loading" class="hidden">
-            <div class="spinner"></div>
-            <p>얼굴을 분석하고 있습니다...</p>
-        </div>
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>얼굴을 분석하고 있습니다...</p>
+            </div>
 
-        <div id="result-container" class="hidden">
-            <h2 id="result-message"></h2>
-            <div id="label-container"></div>
-        </div>
+            <div id="result-container" class="hidden">
+                <h2 id="result-message"></h2>
+                <div id="label-container"></div>
+            </div>
+        </section>
+
+        <section id="blog-section" class="hidden">
+            <h1>동물상 블로그</h1>
+            <p class="subtitle">동물상에 대한 재미있는 이야기들을 만나보세요.</p>
+            <div id="blog-list" class="blog-grid">
+                <!-- Blog posts will be injected here -->
+            </div>
+            <div id="blog-post-content" class="hidden">
+                <button id="back-to-list" class="btn-text">← 목록으로 돌아가기</button>
+                <article class="full-post">
+                    <!-- Full post content will be injected here -->
+                </article>
+            </div>
+        </section>
 
         <div class="contact-section">
             <hr>
