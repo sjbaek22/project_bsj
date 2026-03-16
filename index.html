@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>동물상 테스트 & 블로그</title>
+    <title>동물상 테스트 & AI 분석 블로그 | 나를 닮은 동물은?</title>
+    <meta name="description" content="최신 인공지능 기술을 활용한 동물상 테스트! 강아지상, 고양이상 등 당신의 얼굴형을 분석하고 관련 스타일링 팁과 AI 기술 정보를 확인하세요.">
+    <meta name="keywords" content="동물상 테스트, 관상, 인공지능 테스트, 강아지상, 고양이상, 얼굴 분석, AI 블로그, 뷰티 팁">
+    <link rel="canonical" href="https://sjbaek22.github.io/project_bsj/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sjbaek22.github.io/project_bsj/">
+    <meta property="og:title" content="동물상 테스트 & AI 분석 블로그">
+    <meta property="og:description" content="AI가 분석하는 나의 동물상! 지금 바로 확인하고 다양한 블로그 포스트를 읽어보세요.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
@@ -15,93 +25,99 @@
 </head>
 <body>
     <div class="container">
-        <nav class="main-nav">
-            <div class="nav-links">
-                <a href="#" id="nav-test" class="active">테스트</a>
-                <a href="#" id="nav-blog">블로그</a>
-            </div>
-            <button id="theme-toggle" title="Toggle Dark/Light Mode">🌓</button>
-        </nav>
-
-        <section id="test-section">
-            <h1>동물상 테스트</h1>
-            <p class="subtitle">나와 닮은 동물은 무엇일까요? 사진을 올려서 확인해보세요!</p>
-
-            <div class="upload-section">
-                <div class="upload-area" id="upload-area">
-                    <input type="file" id="image-input" accept="image/*" hidden>
-                    <div class="upload-icon">📸</div>
-                    <p>사진을 클릭하거나 여기로 끌어오세요</p>
+        <header>
+            <nav class="main-nav">
+                <div class="nav-links">
+                    <a href="#" id="nav-test" class="active">테스트</a>
+                    <a href="#" id="nav-blog">블로그</a>
+                    <a href="#" id="nav-about">소개</a>
                 </div>
-                <div id="image-preview-container" class="hidden">
-                    <img id="image-preview" src="" alt="User Preview">
-                    <button id="re-upload-btn">다시 시도하기</button>
+                <button id="theme-toggle" title="다크/라이트 모드 전환">🌓</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- 테스트 섹션 -->
+            <section id="test-section">
+                <h1>AI 동물상 테스트</h1>
+                <p class="subtitle">나와 닮은 동물은 무엇일까요? 사진을 올려서 AI 분석 결과를 확인해보세요!</p>
+
+                <div class="upload-section">
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="image-input" accept="image/*" hidden>
+                        <div class="upload-icon">📸</div>
+                        <p>사진을 클릭하거나 여기로 끌어오세요</p>
+                    </div>
+                    <div id="image-preview-container" class="hidden">
+                        <img id="image-preview" src="" alt="사용자 사진 미리보기">
+                        <button id="re-upload-btn">다시 시도하기</button>
+                    </div>
                 </div>
-            </div>
 
-            <div id="loading" class="hidden">
-                <div class="spinner"></div>
-                <p>얼굴을 분석하고 있습니다...</p>
-            </div>
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>인공지능이 얼굴을 분석하고 있습니다...</p>
+                </div>
 
-            <div id="result-container" class="hidden">
-                <h2 id="result-message"></h2>
-                <div id="label-container"></div>
-            </div>
-        </section>
+                <div id="result-container" class="hidden">
+                    <h2 id="result-message"></h2>
+                    <div id="label-container"></div>
+                </div>
+            </section>
 
-        <section id="blog-section" class="hidden">
-            <h1>동물상 블로그</h1>
-            <p class="subtitle">동물상에 대한 재미있는 이야기들을 만나보세요.</p>
-            <div id="blog-list" class="blog-grid">
-                <!-- Blog posts will be injected here -->
-            </div>
-            <div id="blog-post-content" class="hidden">
-                <button id="back-to-list" class="btn-text">← 목록으로 돌아가기</button>
-                <article class="full-post">
-                    <!-- Full post content will be injected here -->
-                </article>
-            </div>
-        </section>
+            <!-- 블로그 섹션 -->
+            <section id="blog-section" class="hidden">
+                <h1>동물상 & AI 매거진</h1>
+                <p class="subtitle">외모 분석 기술과 스타일링에 대한 유익한 정보를 만나보세요.</p>
+                <div id="blog-list" class="blog-grid">
+                    <!-- 블로그 포스트가 여기에 주입됩니다 -->
+                </div>
+                <div id="blog-post-content" class="hidden">
+                    <button id="back-to-list" class="btn-text">← 목록으로 돌아가기</button>
+                    <article class="full-post">
+                        <!-- 상세 포스트 내용이 여기에 주입됩니다 -->
+                    </article>
+                </div>
+            </section>
+
+            <!-- 소개 / 법적 섹션 (동적 주입) -->
+            <section id="info-section" class="hidden">
+                <div id="info-content"></div>
+                <button class="btn-text back-home">← 홈으로 돌아가기</button>
+            </section>
+        </main>
 
         <div class="contact-section">
             <hr>
-            <h3>Partnership Inquiry</h3>
+            <h3>문의 및 제휴</h3>
+            <p>협업 제안이나 문의 사항이 있으시면 아래 폼을 통해 연락해 주세요.</p>
             <form action="https://formspree.io/f/xykndwqa" method="POST" id="contact-form">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" placeholder="성함을 입력하세요" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="_replyto" placeholder="Your Email" required>
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="_replyto" placeholder="답변받을 이메일 주소" required>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4" placeholder="How can we collaborate?" required></textarea>
+                    <label for="message">메시지</label>
+                    <textarea id="message" name="message" rows="4" placeholder="문의 내용을 입력해 주세요" required></textarea>
                 </div>
-                <button type="submit" id="submit-btn">Send Message</button>
+                <button type="submit" id="submit-btn">메시지 보내기</button>
             </form>
         </div>
 
-        <div class="comments-section">
-            <hr>
-            <h3>Comments</h3>
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                    this.page.url = window.location.href;
-                    this.page.identifier = 'animal-face-test';
-                };
-                (function() {
-                    var d = document, s = d.createElement('script');
-                    s.src = 'https://project-bsj.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        </div>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2026 동물상 테스트 & AI 분석 블로그. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#" id="link-about">회사 소개</a>
+                    <a href="#" id="link-privacy">개인정보처리방침</a>
+                    <a href="#" id="link-terms">이용약관</a>
+                </div>
+            </div>
+        </footer>
     </div>
     <script src="main.js"></script>
 </body>
